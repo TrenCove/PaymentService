@@ -1,0 +1,15 @@
+{
+  "name": "paymentservice",
+  "version": "1.0.0",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TrenCove/PaymentService.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TrenCove/PaymentService/issues"
+  },
+  "homepage": "https://github.com/TrenCove/PaymentService#readme"
+}
