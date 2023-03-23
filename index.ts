@@ -32,7 +32,10 @@ app.post(
                 req.body.item_id,
                 req.body.item_reciept
             );
-            res.sendStatus(response,response1);
+
+            if(response == true){
+            res.sendStatus(response1);
+            }
 
         }catch(error){
             res.sendStatus(400);
