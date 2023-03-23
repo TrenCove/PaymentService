@@ -17,9 +17,6 @@ app.use(
 
 const port = 3000;
 
-app.get('/', (req: Request, res: Response) => {
-
-});
 //pay and save reciept
 app.post(
     "/submitPayment",
@@ -30,13 +27,12 @@ app.post(
         try{
 
             const response = await submitPayment();
-            res.send(response);
 
             const response1 = await saveReciept(
                 req.body.item_id,
                 req.body.item_reciept
             );
-            res.sendStatus(response1);
+            res.sendStatus(response,response1);
 
         }catch(error){
             res.sendStatus(400);
