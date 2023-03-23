@@ -20,11 +20,11 @@ const port = 3000;
 app.get('/', (req: Request, res: Response) => {
 
 });
-
+//pay and save reciept
 app.post(
     "/submitPayment",
     async(
-        req: Request<unknown, unknown, unknown, unknown>,
+        req: Request<unknown, unknown, auctionPaid, unknown>,
         res: Response
     ) =>{
         try{
@@ -32,32 +32,20 @@ app.post(
             const response = await submitPayment();
             res.send(response);
 
-        }catch(error){
-            res.sendStatus(400);
-
-        }
-
-    }
-)
-app.post(
-    "/saveRecepit",
-    async(
-        req: Request<unknown, unknown, auctionPaid, unknown>,
-        res: Response
-    ) =>{
-        try{
-
-            const response = await saveReciept(
+            const response1 = await saveReciept(
                 req.body.item_id,
                 req.body.item_reciept
             );
-            res.sendStatus(response);
+            res.sendStatus(response1);
 
         }catch(error){
             res.sendStatus(400);
+
         }
+
     }
 )
+
 
 app.get(
     '/searchPaid/:item_id',

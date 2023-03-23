@@ -14,9 +14,9 @@ export async function searchPaid(
 ): Promise<auctionPaid> {
 
     return new Promise((resolve,reject) => {
-        db.all(
+        db.get(
         
-            "SELECT * FROM paid_auction WHERE item_id LIKE'%"+item_id+"%'" ,
+            "SELECT * FROM paid_auction WHERE item_id="+item_id,
             
     
             (error: any, row: auctionPaid) => {

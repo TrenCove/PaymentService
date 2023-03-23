@@ -3,12 +3,6 @@ export interface auctionPaid{
     item_reciept: Reciept
 }
 
-export interface UserDbRow{
-    username: string,
-    password: string,
-    name: Name,
-    address: Address
-}
 export interface Name {
     firstName: string,
     lastName: string
