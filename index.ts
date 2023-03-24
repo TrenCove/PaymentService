@@ -1,9 +1,9 @@
 import express, { Express, Request, Response } from "express";
 import bodyParser from "body-parser";
 import { auctionPaid } from "./types/interfaces";
-import { submitPayment } from "./submitPayment";
-import { saveReciept } from "./saveReceipt";
-import { searchPaid } from "./searchPaid";
+import { submitPayment } from "./functions/submitPayment";
+import { saveReciept } from "./functions/saveReceipt";
+import { searchPaid } from "./functions/searchPaid";
 import cors from "cors";
 
 const app: Express = express();
