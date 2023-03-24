@@ -8,6 +8,13 @@ const db = new sqlite3.Database("./db/paid_auction.db", (error) => {
   console.log("Connected searchItemID service to items database");
 });
 
+/**
+ * Searches for a reciept of a paid for item
+ * 
+ * @param item_id - ID of a specific item 
+ * 
+ * @returns a JSON of the item with the matching ID
+ */
 export async function searchPaid(item_id: string): Promise<auctionPaid> {
   return new Promise((resolve, reject) => {
     db.get(

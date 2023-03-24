@@ -8,6 +8,18 @@ const db = new sqlite3.Database("./db/paid_auction.db", (error) => {
     console.log("Connected saveReceipt Service to items database");
 });
 
+/**
+ * Saves the reciept of the purchase
+ * 
+ * @param item_id - ID of a specific item
+ * @param item_reciept - Interface which contains several reciept parameters including: 
+ *  username,
+ *  address,
+ *  name,
+ *  cost
+ *  
+ * @returns a succesful status code or not depening on if the query went though properly
+ */
 export async function saveReciept(
     item_id: number,
     item_reciept: Reciept
