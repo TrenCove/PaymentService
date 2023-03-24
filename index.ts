@@ -10,62 +10,43 @@ const app: Express = express();
 app.use(bodyParser.json());
 app.use(cors());
 app.use(
-    bodyParser.urlencoded({
-        extended: true,
-    })
+  bodyParser.urlencoded({
+    extended: true,
+  })
 );
 
-const port = 3000;
+const port = 3004;
 
-//pay and save reciept
 app.post(
-    "/submitPayment",
-    async(
-        req: Request<unknown, unknown, auctionPaid, unknown>,
-        res: Response
-    ) =>{
-        try{
-
-            const response = await submitPayment();
-
-            const response1 = await saveReciept(
-                req.body.item_id,
-                req.body.item_reciept
-            );
-
-            if(response == true){
-            res.sendStatus(response1);
-            }
-
-        }catch(error){
-            res.sendStatus(400);
-
-        }
-
+  "/submitPayment",
+  async (
+    req: Request<unknown, unknown, auctionPaid, unknown>,
+    res: Response
+  ) => {
+    try {
+      const paymentResponse = await submitPayment();
+      if (paymentResponse == true) {
+        const response = await saveReciept(
+          req.body.item_id,
+          req.body.item_receipt
+        );
+        res.sendStatus(response);
+      }
+    } catch (error) {
+      res.sendStatus(400);
     }
-)
+  }
+);
 
-
-app.get(
-    '/searchPaid/:item_id',
-    async (
-        req: Request,
-        res: Response
-    ) => {
-        try{
-            
-            const response = await searchPaid(req.params.item_id);
-
-                res.json(response);
-            
-        }catch (error){
-            res.sendStatus(400);
-        }
-    }
-)
-
-
+app.get("/searchPaid/:item_id", async (req: Request, res: Response) => {
+  try {
+    const response = await searchPaid(req.params.item_id);
+    res.json(response);
+  } catch (error) {
+    res.sendStatus(400);
+  }
+});
 
 app.listen(port, () => {
-    console.log(`App listening on PORT ${port}`);
-   });
+  console.log(`App listening on PORT ${port}`);
+});
