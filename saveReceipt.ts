@@ -1,6 +1,5 @@
 import sqlite3 from "sqlite3";
 import { Reciept } from "./types/interfaces";
-import { Name, Address } from "./types/interfaces";
 
 const db = new sqlite3.Database("./db/paid_auction.db", (error) => {
     if (error){

@@ -1,6 +1,6 @@
 export interface auctionPaid{
     item_id: number,
-    item_reciept: Reciept
+    item_receipt: Reciept
 }
 
 export interface Name {
