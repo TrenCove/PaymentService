@@ -1,7 +1,7 @@
 import sqlite3 from "sqlite3";
-import { Reciept } from "./types/interfaces";
+import { Reciept } from "../types/interfaces";
 
-const db = new sqlite3.Database("./db/paid_auction.db", (error) => {
+const db = new sqlite3.Database("../db/paid_auction.db", (error) => {
     if (error){
         console.error(error.message);
     }
@@ -12,13 +12,9 @@ const db = new sqlite3.Database("./db/paid_auction.db", (error) => {
  * Saves the reciept of the purchase
  * 
  * @param item_id - ID of a specific item
- * @param item_reciept - Interface which contains several reciept parameters including: 
- *  username,
- *  address,
- *  name,
- *  cost
+ * @param item_reciept - receipt object
  *  
- * @returns a succesful status code or not depening on if the query went though properly
+ * @returns a succesful http status code or not depening on if the query went though properly
  */
 export async function saveReciept(
     item_id: number,
