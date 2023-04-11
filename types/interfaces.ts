@@ -20,3 +20,7 @@ export interface Reciept{
     name: Name,
     cost: number
 }
+export interface IPayment {
+    paymentType: string,
+    getPaymentType(): string,
+}
