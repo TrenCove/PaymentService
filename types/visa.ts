@@ -1,9 +1,12 @@
-import { IPayment } from "../types/interfaces";
-import Payment from "../functions/Payment";
+import Payment from "./payment";
 
 export default class Visa extends Payment {
     constructor() {
         super()
         this.paymentType = "Visa"
+    }
+
+    submitPayment(): Boolean {
+        return true;
     }
 }
