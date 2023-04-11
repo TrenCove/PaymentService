@@ -1,6 +1,7 @@
 export interface auctionPaid{
     item_id: number,
-    item_receipt: Reciept
+    item_receipt: Reciept,
+    pay: string
 }
 
 export interface Name {
@@ -19,4 +20,8 @@ export interface Reciept{
     address: Address,
     name: Name,
     cost: number
+}
+export interface IPayment {
+    paymentType: string,
+    getPaymentType(): string,
 }

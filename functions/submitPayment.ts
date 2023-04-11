@@ -4,13 +4,24 @@
  * @returns a TRUE boolean showing that it went through
  * 
  */
+import { IPayment } from "../types/interfaces";
+import PaymentFactory from "./payment-factory";
+import Payment from "./Payment";
+import Visa from "./visa";
+import MasterCard from "./masterCard";
+import Amex from "./amex";
 
-export async function submitPayment(
+export async function submitPayment(pay: string
 
-): Promise<Boolean>{
+): Promise<Visa|MasterCard|Amex>{
 
     return new Promise((resolve,reject) => {
-        return resolve(true);
+        
+        
+        const p = PaymentFactory.getPayment(pay)
+
+        return resolve(p);
     });
 
 }
+

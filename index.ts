@@ -24,14 +24,15 @@ app.post(
     res: Response
   ) => {
     try {
-      const paymentResponse = await submitPayment();
-      if (paymentResponse == true) {
+      const paymentResponse = await submitPayment(req.body.pay);
+      console.log(paymentResponse);
+      
         const response = await saveReciept(
           req.body.item_id,
           req.body.item_receipt
         );
         res.sendStatus(response);
-      }
+      
     } catch (error) {
       res.sendStatus(400);
     }
