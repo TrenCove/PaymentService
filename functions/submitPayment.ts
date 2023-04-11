@@ -7,23 +7,20 @@
 import { IPayment } from "../types/interfaces";
 import PaymentFactory from "./payment-factory";
 import Payment from "./Payment";
+import Visa from "./visa";
+import MasterCard from "./masterCard";
+import Amex from "./amex";
 
-export async function submitPayment(
+export async function submitPayment(pay: string
 
-): Promise<Boolean>{
+): Promise<Visa|MasterCard|Amex>{
 
     return new Promise((resolve,reject) => {
-        const i = Math.floor(Math.random() * 3)
-        if(i == 0){
-            const p = PaymentFactory.getPayment("Visa")
-        }
-        else if (i == 1){
-            const p = PaymentFactory.getPayment("Amex")
-        }
-        else{
-            const p = PaymentFactory.getPayment("MasterCard")
-        }
-        return resolve(true);
+        
+        
+        const p = PaymentFactory.getPayment(pay)
+
+        return resolve(p);
     });
 
 }
